@@ -58,8 +58,6 @@ const openedMixin = (theme: Theme): CSSObject => ({
   }),
   overflowX: "hidden",
 
-  color: "#b2c1d4",
-  backgroundColor: "#042a4a",
   ...scrollbarStyle
 });
 
@@ -73,9 +71,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
   [theme.breakpoints.up("tablet")]: {
     width: `calc(${theme.spacing(9)} + 1px)`,
   },
-  
-  color: "#b2c1d4",
-  backgroundColor: "#042a4a",
   
   ...scrollbarStyle
 });

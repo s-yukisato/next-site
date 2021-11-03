@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from 'next/image'
+import Image from "next/image";
 
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -85,9 +85,11 @@ type LinkProps = {
 };
 
 const CListItemText = styled(ListItemText)(({ theme }) => ({
-  fontSize: "120px",
-  fontFamily: "Zen Kurenaido",
-  paddingLeft: theme.spacing(2),
+  ["& .MuiTypography-root"]: {
+    fontSize: "12px",
+    fontFamily: "Zen Kurenaido",
+    paddingLeft: theme.spacing(2),
+  },
 }));
 
 const InternalLink: React.VFC<LinkProps> = ({ content }) => {
@@ -104,6 +106,7 @@ const InternalLink: React.VFC<LinkProps> = ({ content }) => {
       component={"a"}
       href={content.link}
       key={content.title}
+      sx={{ p: 0.5}}
     >
       <CListItemText primary={content.title} />
     </ListItemButton>
@@ -126,7 +129,7 @@ const ExternalLink: React.VFC<LinkProps> = ({ content }) => {
 const ContainerGrid = styled(Grid)(({ theme }) => ({
   marginTop: "auto",
   width: "80%",
-  justifyContent: "space-evenly",
+  justifyContent: "center",
   alignItems: "start",
 }));
 
@@ -164,7 +167,9 @@ const Footer = () => {
           <ItemGrid item key={listItem.title}>
             <List sx={{ display: { mobile: "none", tablet: "block" } }}>
               <ListItem key={listItem.title}>
-                <Typography variant="body1" pl={4}>{listItem.title}</Typography>
+                <Typography variant="body1">
+                  {listItem.title}
+                </Typography>
               </ListItem>
               {listItem.contents.map((item) =>
                 item.external ? (
@@ -179,7 +184,7 @@ const Footer = () => {
 
         <List
           sx={{
-            width: "100%",
+            width: "90%",
             maxWidth: 360,
             display: { mobile: "block", tablet: "none" },
             pb: { mobile: 3, tablet: 0 },

@@ -3,7 +3,6 @@ import { blue, teal } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
-    mode: "dark",
     primary: {
       main: blue[800],
       dark: "rgba(147, 149, 151, 0.8)",

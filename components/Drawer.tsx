@@ -18,6 +18,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useColorMode } from "../context/useColorMode";
 
 const drawerWidth = 240;
 
@@ -47,8 +50,8 @@ const scrollbarStyle = {
   },
   "&::-webkit-scrollbar-corner": {
     backgroundColor: "#2b2b2b",
-  }
-}
+  },
+};
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -58,7 +61,7 @@ const openedMixin = (theme: Theme): CSSObject => ({
   }),
   overflowX: "hidden",
 
-  ...scrollbarStyle
+  ...scrollbarStyle,
 });
 
 const closedMixin = (theme: Theme): CSSObject => ({
@@ -71,8 +74,8 @@ const closedMixin = (theme: Theme): CSSObject => ({
   [theme.breakpoints.up("tablet")]: {
     width: `calc(${theme.spacing(9)} + 1px)`,
   },
-  
-  ...scrollbarStyle
+
+  ...scrollbarStyle,
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -140,6 +143,7 @@ type Props = {
 
 const MiniDrawer: VFC<Props> = ({ title, children }) => {
   const theme = useTheme();
+  const colorMode = useColorMode();
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -189,10 +193,6 @@ const MiniDrawer: VFC<Props> = ({ title, children }) => {
             "Starred",
             "Send email",
             "Drafts",
-            "Inbox",
-            "Starred",
-            "Send email",
-            "Drafts",
           ].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
@@ -213,6 +213,32 @@ const MiniDrawer: VFC<Props> = ({ title, children }) => {
             </ListItem>
           ))}
         </List>
+        <Divider />
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            bgcolor: "background.default",
+            color: "text.primary",
+            borderRadius: 1,
+            p: 3,
+          }}
+        >
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={colorMode.toggleColorMode}
+            color="inherit"
+          >
+            {theme.palette.mode === "dark" ? (
+              <Brightness7Icon />
+            ) : (
+              <Brightness4Icon />
+            )}
+          </IconButton>
+          {theme.palette.mode} mode
+        </Box>
       </Drawer>
       <Container>
         <Toolbar />

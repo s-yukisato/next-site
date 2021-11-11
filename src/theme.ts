@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { blue, teal } from "@mui/material/colors";
+import { blue, teal} from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
@@ -69,10 +69,5 @@ declare module "@mui/material/styles" {
   }
 }
 
-declare module '@mui/material/styles' {
-  interface StyleOverrides {
-    html: true;
-  }
-}
 
 export default theme;

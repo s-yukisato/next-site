@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Wrapper } from "../components/Wrapper";
 import styles from "../styles/Content.module.scss";
 
-const Index: React.VFC = () => {
+const Content: React.VFC = () => {
   const router = useRouter();
   return (
     <Wrapper>
@@ -17,4 +17,4 @@ const Index: React.VFC = () => {
   );
 };
 
-export default Index;
+export default Content;

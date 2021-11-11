@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 export function useColorMode() {
